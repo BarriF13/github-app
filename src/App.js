@@ -8,7 +8,7 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-       <Navbar title="Let's search github" icon='fab fa-github'/>
+       <Navbar />
       <h1>Hello</h1>
       </div>
     
