@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
        <Navbar />
        <UserItem />
-      <h1>Hello</h1>
+      
       </div>
     
     );
