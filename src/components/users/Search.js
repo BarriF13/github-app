@@ -7,7 +7,9 @@ export class Search extends Component {
   }
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.text);
+    // console.log(this.state.text); <-- need to pass this value to App for searching the chosen user
+    this.props.searchUsers(this.state.text);
+    this.setState({text: ''});
 
   }
 

@@ -21,6 +21,10 @@ class App extends Component {
         // after we get the data
         this.setState({users: res.data, loading: false});
         }
+        //This will search github users
+        searchUsers =(text) =>{
+          console.log(text);
+        }
       render(){
       
         return (
@@ -28,7 +32,7 @@ class App extends Component {
           <Navbar />
           
           <div className="container">
-          <Search />
+          <Search searchUsers={this.searchUsers}/>
           <Users loading ={this.state.loading} users ={this.state.users}/>
          
             
