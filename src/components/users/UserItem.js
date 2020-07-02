@@ -1,9 +1,7 @@
 import React from 'react'
 
 // function UserItem () -- we can trun it to arrow function like below
-const UserItem=  (props) => {
- 
-   const {id, login, avatar_url, html_url} =  props.user;
+const UserItem=  ({user:{id, login, avatar_url, html_url}}) => {
     return (
       <div className='card text-center'>
         <img src={avatar_url}
