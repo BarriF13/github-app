@@ -12,18 +12,23 @@ class App extends Component {
     users:[],
     loading: false // there is going to be delay white we getting the files so we set loading true while we are grabbing the files as soon as they are ready we turn it to false
   }
-      async componentDidMount(){
-          this.setState({loading: true}); // as said above
+      // async componentDidMount(){
+        //   this.setState({loading: true}); // as said above
       
-        const res = await axios
-        .get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`) // we need this data to become object or state
-        // console.log(res.data);
-        // after we get the data
-        this.setState({users: res.data, loading: false});
-        }
+        // const res = await axios
+        // .get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`) // we need this data to become object or state
+        // // console.log(res.data);
+        // // after we get the data
+        // this.setState({users: res.data, loading: false});
+        // }
         //This will search github users
-        searchUsers =(text) =>{
-          console.log(text);
+
+        
+        searchUsers =async text =>{
+          const res = await axios
+          .get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
+
+          this.setState({users: res.data.items, loading: false});
         }
       render(){
       
