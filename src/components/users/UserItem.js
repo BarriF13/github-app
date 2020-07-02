@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class UserItem extends Component {
+// function UserItem () -- we can trun it to arrow function like below
+const UserItem=  (props) => {
  
-
-  render() {
-    const {id, login, avatar_url, html_url} = this.props.user;
+   const {id, login, avatar_url, html_url} =  props.user;
     return (
       <div className='card text-center'>
         <img src={avatar_url}
@@ -19,7 +18,7 @@ class UserItem extends Component {
     </div>
       </div>
     );
-  }
+  
 }
 
 export default UserItem
