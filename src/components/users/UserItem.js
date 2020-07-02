@@ -1,6 +1,6 @@
 import React from 'react'
-
-// function UserItem () -- we can trun it to arrow function like below
+import PropTypes from 'prop-types'
+// function UserItem () -- we can trun it to arrow function like below -- user has prop so we need to set it's prop types below. 
 const UserItem=  ({user:{id, login, avatar_url, html_url}}) => {
     return (
       <div className='card text-center'>
@@ -18,5 +18,7 @@ const UserItem=  ({user:{id, login, avatar_url, html_url}}) => {
     );
   
 }
-
+UserItem.propTypes = {
+  user: PropTypes.object.isRequired,
+}
 export default UserItem
