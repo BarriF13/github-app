@@ -12,6 +12,7 @@ class App extends Component {
     users:[],
     loading: false // there is going to be delay white we getting the files so we set loading true while we are grabbing the files as soon as they are ready we turn it to false
   }
+  //------------------we can now remove this default of show first 46 users but I am keeping it for my own understanding
       // async componentDidMount(){
         //   this.setState({loading: true}); // as said above
       
@@ -21,15 +22,20 @@ class App extends Component {
         // // after we get the data
         // this.setState({users: res.data, loading: false});
         // }
-        //This will search github users
+  //---------------------------------------------------------------------------------
 
-        
+        //This will search github users
         searchUsers =async text =>{
+          this.setState({loading: true});
+
           const res = await axios
           .get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
 
           this.setState({users: res.data.items, loading: false});
-        }
+        };
+        // Clear users from state
+        clearUsers =() =>this.setState({users:[] , loading: false});
+        
       render(){
       
         return (
@@ -37,7 +43,7 @@ class App extends Component {
           <Navbar />
           
           <div className="container">
-          <Search searchUsers={this.searchUsers}/>
+          <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers}/>
           <Users loading ={this.state.loading} users ={this.state.users}/>
          
             

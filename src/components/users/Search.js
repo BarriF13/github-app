@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 //when we have a form in react usually : attach a state to the input for example below input is name ="text"
 
 export class Search extends Component {
   state ={
     text:'',
+  };
+
+  static propTypes = {
+    searchUsers: PropTypes.func.isRequired,
+    clearUsers: PropTypes.func.isRequired,
+
   }
   onSubmit = (e) => {
     e.preventDefault();
@@ -32,6 +40,11 @@ export class Search extends Component {
 
          <input type="submit" value="Search" className="btn btn-dark btn-block"/>
         </form>
+        <button
+         className="btn btn-light btn-block"
+         //when we click we calling it and sending it up(prop up). so we will catch it in App
+          onClick={this.props.clearUsers}
+          >Clear search</button>
       </div>
     )
   }
