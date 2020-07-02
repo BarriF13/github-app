@@ -11,6 +11,7 @@ export class Search extends Component {
   static propTypes = {
     searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
+    showClear: PropTypes.bool.isRequired
 
   }
   onSubmit = (e) => {
@@ -40,11 +41,16 @@ export class Search extends Component {
 
          <input type="submit" value="Search" className="btn btn-dark btn-block"/>
         </form>
-        <button
-         className="btn btn-light btn-block"
-         //when we click we calling it and sending it up(prop up). so we will catch it in App
-          onClick={this.props.clearUsers}
-          >Clear search</button>
+
+        {this.props.showClear && (
+             <button
+             className="btn btn-light btn-block"
+             //when we click we calling it and sending it up(prop up). so we will catch it in App
+              onClick={this.props.clearUsers}
+              >Clear search</button>
+        )
+        }
+       
       </div>
     )
   }
