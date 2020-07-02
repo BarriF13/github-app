@@ -27,6 +27,7 @@ export class Search extends Component {
     this.setState({[e.target.name]: e.target.value});
   }
   render() {
+    const {showClear, clearUsers} = this.props;
     return (
       <div>
         
@@ -42,11 +43,11 @@ export class Search extends Component {
          <input type="submit" value="Search" className="btn btn-dark btn-block"/>
         </form>
 
-        {this.props.showClear && (
+        {showClear && (
              <button
              className="btn btn-light btn-block"
              //when we click we calling it and sending it up(prop up). so we will catch it in App
-              onClick={this.props.clearUsers}
+              onClick={clearUsers}
               >Clear search</button>
         )
         }
